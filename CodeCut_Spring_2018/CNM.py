@@ -1,4 +1,4 @@
-import snap
+import snap as snap
 import importlib
 import graphviz as gv
 from graphviz import Digraph
