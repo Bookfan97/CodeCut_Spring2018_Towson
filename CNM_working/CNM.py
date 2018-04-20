@@ -4,9 +4,9 @@ import graphviz as gv
 
 # UGraph.isNode(x)
 count=0
-UGraph= snap.TUNGraph.New()
+UGraph= snap.PUNGraph.New()
 # UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-with open("DataFiles/px4.gv", "r") as f:
+with open("DataFiles/test.txt", "r") as f:
     for line in f:
         if line== "}":
             break
@@ -15,15 +15,22 @@ with open("DataFiles/px4.gv", "r") as f:
         print("NodeIDL (pre-strip): "+NodeIDL)
         print("NodeIDL (pre-strip): "+NodeIDR)
         NodeIDR.strip()
-        a= NodeIDR.split("x",1)[1]
-        b= NodeIDL.strip("s_0x")
-        print("NodeIDR: "+ a)
-        print("NodeIDL: "+b)
-        UGraph.IsNode(int(a, 16))
-        UGraph.IsNode(int(b, 16))
+        string1= NodeIDR.split("x",1)[1]
+        string2= NodeIDL.strip("s_0x")
+        a= int(string1, 16)
+        b= int(string2, 16)
+        if UGraph.IsNode(a) == False:
+            UGraph.AddNode(a)
+        if UGraph.IsNode(b) == False:
+            UGraph.AddNode(b)
+        if UGraph.IsEdge(a,b)==False:
+            UGraph.AddEdge(a, b)
+            print("Edge w/if added")
         count=count+1
-
+        print("count during for loop: ", count)
+print("Test to see if reached")
 CmtyV = snap.TCnComV()
+# modularity = snap.CommunityGirvanNewman(UGraph, CmtyV)
 modularity = snap.CommunityCNM(UGraph, CmtyV)
 for Cmty in CmtyV:
     print ("Community: ")
