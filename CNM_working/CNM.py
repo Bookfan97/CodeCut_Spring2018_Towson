@@ -6,9 +6,9 @@ import graphviz as gv
 count=0
 UGraph= snap.PUNGraph.New()
 # UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-with open("DataFiles/test.txt", "r") as f:
+with open("DataFiles/test2.txt", "r") as f:
     for line in f:
-        if line== "}":
+        if line.strip()== "}":
             break
         NodeIDL, NodeIDR= line.split("->")
         NodeIDR=NodeIDR.split("[") [0]
@@ -30,6 +30,7 @@ with open("DataFiles/test.txt", "r") as f:
         print("count during for loop: ", count)
 print("Test to see if reached")
 CmtyV = snap.TCnComV()
+print("Test to see if reached2")
 # modularity = snap.CommunityGirvanNewman(UGraph, CmtyV)
 modularity = snap.CommunityCNM(UGraph, CmtyV)
 for Cmty in CmtyV:
@@ -37,4 +38,4 @@ for Cmty in CmtyV:
     for NI in Cmty:
         print (NI)
 print ("The modularity of the network is %f" % modularity)
-print("The count is: " ,count)
+print("The count is: ", count)
