@@ -5,7 +5,7 @@ from graphviz import Digraph
 
 # UGraph.isNode(x)
 count=0
-graphList=["DataFiles/px4.gv","DataFiles/gnuchess.gv","DataFiles/test.txt","DataFiles/test2.txt"]
+graphList=["DataFiles/px4.gv","DataFiles/gnuchess.gv","DataFiles/px4_subsample_100lines.txt","DataFiles/px4_subsample_762lines.txt"]
 UGraph= snap.PUNGraph.New()
 
 for index in range(0, len(graphList)):
