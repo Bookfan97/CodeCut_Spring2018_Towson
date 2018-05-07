@@ -70,7 +70,7 @@ for x in xrange(1,len(clusters)):
     print (cluster)
     moduleStart = clusters[x][index]
     print("module start: "+str(moduleStart))
-    tempModuleEnd = clusters[x][index]
+    tempModuleEnd = clusters[x][index+1]
     print("tempModuleEnd: "+str(tempModuleEnd))
     nextFunction1 = clusters[x][index]
     print("nextFunction1: "+str(nextFunction1))
@@ -94,7 +94,9 @@ for x in xrange(1,len(clusters)):
         if(nextFunction1 == nextFunction2):
           tempModuleEnd = nextFunction1
           print("tempModuleEnd: "+str(tempModuleEnd))
-    mapdata=moduleStart-tempModuleEnd
-    print(mapdata)
-    map.append(mapdata)
-    print(map)
+    finalindex=abs(moduleStart-tempModuleEnd)
+    print(finalindex)
+    map.append(finalindex)
+print(map)
+map.sort()
+print(map)
