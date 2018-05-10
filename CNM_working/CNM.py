@@ -77,7 +77,7 @@ for x in xrange(1,len(clusters)):
     finalindex=abs(moduleStart-tempModuleEnd)
     map.append(hex(finalindex))
 map.sort()
-print(map)
+print("Map: "+str(map))
 file=graphList[filename].split(".txt")
 filestring=str(file[0])
 mapname=filestring+".map"
