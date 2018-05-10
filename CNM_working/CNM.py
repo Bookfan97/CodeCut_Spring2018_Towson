@@ -1,7 +1,7 @@
 import snap
 
 count=0
-graphList=["DataFiles/px4.gv","DataFiles/gnuchess.gv","DataFiles/px4_subsample_100lines.txt","DataFiles/px4_subsample_762lines.txt"]
+graphList=["DataFiles/px4.gv","DataFiles/gnuchess.gv","DataFiles/px4_subsample_100lines.txt","DataFiles/px4_subsample_762lines.txt", "DataFiles/test_length.txt"]
 UGraph= snap.PUNGraph.New()
 w= 100;
 communities=[[0 for x in range(w)] for y in range(w)]
@@ -56,7 +56,10 @@ for x in xrange(1,len(clusters)):
     index=0
     cluster=clusters[x]
     moduleStart = clusters[x][index]
-    tempModuleEnd = clusters[x][index+1]
+    indexplusone=index=1
+    if indexplusone>len(cluster)-1:
+        break
+    tempModuleEnd = clusters[x][indexplusone]
     nextFunction1 = clusters[x][index]
     allindex=allnodes.index(moduleStart)
     nextFunction2 = allnodes[allindex]
